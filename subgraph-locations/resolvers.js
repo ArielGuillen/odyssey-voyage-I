@@ -6,6 +6,11 @@ const resolvers = {
     location: (_, { id }, { dataSources }) => {
       return dataSources.locationsAPI.getLocation(id);
     },
+    Location: {
+      __resolveReference: ({ id }, { dataSources }) => {
+        return dataSources.locationsAPI.getLocation(id);
+      },
+    },
   },
 };
 

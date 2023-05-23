@@ -20,6 +20,14 @@ type Review {
   location: Location
 }
 
+type Location @key(fields: "id", resolvable: false) {
+  id: ID!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this location"
+  reviewsForLocation: [Review]!
+}
+
 input LocationReviewInput {
   "Written text"
   comment: String!
@@ -38,8 +46,4 @@ type SubmitReviewResponse {
   message: String!
   "Newly created review"
   locationReview: Review
-}
-
-type Location @key(fields: "id", resolvable: false) {
-  id: ID!
 }

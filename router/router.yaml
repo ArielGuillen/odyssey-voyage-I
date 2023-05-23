@@ -1,0 +1,18 @@
+supergraph:
+  listen: 0.0.0.0:4000
+  introspection: true
+sandbox:
+  enabled: true
+homepage:
+  enabled: false
+cors:
+  origins:
+    - http://localhost:3000 # Allows any locally-running client to run against your Router
+    - https://studio.apollographql.com # Allows Apollo Studio to still run queries against your Router
+headers:
+  all:
+    request:
+      - propagate:
+          matching: .*
+include_subgraph_errors:
+  all: true
